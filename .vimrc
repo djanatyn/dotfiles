@@ -3,6 +3,9 @@
 """ =======================
 """ feel free to debug or use, or whatever.
 
+" pathogen, yeah!
+execute pathogen#infect()
+
 "" --------------
 "" visual options
 "" --------------
@@ -11,7 +14,7 @@ set guifont=Ubuntu\ Mono\ 12
 
 " syntax highlighting
 syntax on
-colorscheme molokai
+colorscheme desert
 
 " disable gui options
 set guioptions=
@@ -41,11 +44,14 @@ set hlsearch
 autocmd insertenter * :let @/=""
 autocmd insertleave * :let @/=""
 
-" Q repeats macro a
-map Q @a
+" Q repeats macro q
+map Q @q
 
 " map jk to escape
 inoremap jk <Esc>
+
+inoremap <C-f> <Right>
+inoremap <C-b> <Left>
 "" ----------
 "" misc stuff
 "" ----------
@@ -80,9 +86,6 @@ set ruler
 " allow buffers to be hidden
 set hidden
 
-" CtrlP
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-
 " leader key
 let mapleader = ","
 
@@ -90,7 +93,37 @@ let mapleader = ","
 nnoremap <leader>q :cq<CR>
 nnoremap <leader>s :w<CR>
 nnoremap <leader>v :e ~/.vimrc<CR>
-nnoremap <leader>e :<C-p><CR>
+nnoremap <leader>e :<C-p>
 
-" quicker ex mode commands
-nnoremap ; :
+" filetype stuff
+set nocompatible
+filetype on
+filetype indent on
+filetype plugin on
+
+" line wrapping shit
+set wrap
+set linebreak
+set nolist  " list disables linebreak
+
+set textwidth=0
+set wrapmargin=0
+
+set formatoptions+=l
+
+" fugitive git bindings
+nnoremap <leader>ga :Git add %:p<CR><CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gc :Gcommit -v -q<CR>
+nnoremap <leader>gt :Gcommit -v -q %:p<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>ge :Gedit<CR>
+nnoremap <leader>gr :Gread<CR>
+nnoremap <leader>gw :Gwrite<CR><CR>
+nnoremap <leader>gl :silent! Glog<CR>:bot copen<CR>
+nnoremap <leader>gp :Ggrep<leader>
+nnoremap <leader>gm :Gmove<leader>
+nnoremap <leader>gb :Git branch<leader>
+nnoremap <leader>go :Git checkout<leader>
+nnoremap <leader>gps :Dispatch! git push<CR>
+nnoremap <leader>gpl :Dispatch! git up<CR>
