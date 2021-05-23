@@ -1,4 +1,3 @@
-dotfiles
-========
+# dotfiles
 
-configuration files
+managed with stow
