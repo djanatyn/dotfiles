@@ -59,10 +59,17 @@
   (interactive)
   (setenv "SSH_AUTH_SOCK" (string-trim (shell-command-to-string "gpgconf --list-dirs agent-ssh-socket"))))
 
+(defun tmux-insert ()
+  (interactive)
+  (insert (string-trim (shell-command-to-string "tmux show-buffer"))))
+
 ;; personal keybindings
 ;; ====================
 ;; i learned how to do this from https://rameezkhan.me/adding-keybindings-to-doom-emacs/
 (map! :leader
+      (:prefix-map ("i" . "insert")
+       :desc "tmux show-buffer" "l" 'tmux-insert)
+
       (:prefix-map ("c" . "code")
        :desc "org-structure-template" "," 'org-insert-structure-template
        :desc "license" "l" 'spdx-insert-spdx))
@@ -75,3 +82,4 @@
     (define-key input-decode-map "\e[1;5A" [(control up)])
     (define-key input-decode-map "\e[1;5B" [(control down)])
     (define-key input-decode-map "\e[1;5F" [(meta left)])))
+
