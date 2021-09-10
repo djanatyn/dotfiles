@@ -4,12 +4,15 @@
 (package! nix-mode)
 (package! monokai-theme)
 (package! leuven-theme)
+(package! acme-theme)
 (package! symon)
 (package! pinentry)
 (package! wakatime-mode)
 (package! magit-delta)
 (package! org-roam)
 (package! org-roam-server)
+(package! org-sidebar :recipe
+  (:host github :repo "alphapapa/org-sidebar"))
 (package! lister :recipe
   (:host github
    :repo "publicimageltd/lister"

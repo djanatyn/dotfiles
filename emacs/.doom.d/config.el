@@ -1,10 +1,9 @@
 ;; doom modules
 ;; ============
-(after! doom
-  (setq display-line-numbers-type 'relative)
-  (doom/set-frame-opacity 90)
-  (setq doom-theme 'doom-outrun-electric)
-  (setq doom-font (font-spec :family "Fira Mono" :size 12)))
+(doom/set-frame-opacity 80)
+(setq display-line-numbers-type 'relative)
+(setq doom-font (font-spec :family "Unifont" :size 14))
+(setq org-roam-directory "~/org-roam")
 
 (after! org
   (setq org-agenda-files '("~/org-roam/" "~/org-roam/daily/"))
@@ -31,23 +30,12 @@
 (after! magit
   (magit-delta-mode +1))
 
-;; individual packages
-;; ===================
-(use-package! symon
-  :init (symon-mode))
-
-(use-package! elfeed
-  :init (setq rmh-elfeed-org-files (list "~/.feeds.org")))
-
 (use-package! pinentry
   :init (setenv "INSIDE_EMACS" (format "%s,comint" emacs-version))
   :config (pinentry-start))
 
 (use-package! wakatime-mode
   :config (global-wakatime-mode))
-
-(use-package! org-roam
-  :config (setq org-roam-directory "~/org-roam"))
 
 (use-package! delve-minor-mode
   :config (add-hook 'org-mode-hook #'delve-minor-mode-maybe-activate))
