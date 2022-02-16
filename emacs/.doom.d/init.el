@@ -8,8 +8,7 @@
  window-select treemacs hydra zen minimap workspaces
 
  :editor snippets (evil +everywhere) file-templates (format +onsave) parinfer
- :emacs dired electric fold vc
- :tools lookup eval ansible docker editorconfig gist make magit pass tmux
- :lang nim data emacs-lisp (haskell +lsp) markdown nix (org +roam +dragndrop +pandoc) rust python (sh +zsh)
- :email notmuch
+ :emacs dired electric fold vc (undo +tree)
+ :tools lookup eval editorconfig make magit pass tmux
+ :lang elm dhall data (haskell +lsp) markdown nix (org +roam +dragndrop +pandoc) rust (sh +zsh) racket
  :config (default +bindings +snippets +evil-commands))

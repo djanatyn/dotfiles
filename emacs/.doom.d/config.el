@@ -3,6 +3,7 @@
 (doom/set-frame-opacity 80)
 (setq display-line-numbers-type 'relative)
 (setq doom-font (font-spec :family "Unifont" :size 14))
+(setq doom-theme 'doom-monokai-pro)
 (setq org-roam-directory "~/org-roam")
 
 (after! org
@@ -16,10 +17,8 @@
 (after! notmuch
   (setq +notmuch-sync-backend 'mbsync))
 
-(after! haskell
-  (set-formatter! 'ormolu "ormolu" :modes '(haskell-mode)))
-
 (after! format
+  (set-formatter! 'ormolu "ormolu" :modes '(haskell-mode))
   (setq +format-on-save-enabled-modes
         '(not emacs-lisp-mode  ; elisp's mechanisms are good enough
               sql-mode         ; sqlformat is currently broken
@@ -33,12 +32,6 @@
 (use-package! pinentry
   :init (setenv "INSIDE_EMACS" (format "%s,comint" emacs-version))
   :config (pinentry-start))
-
-(use-package! wakatime-mode
-  :config (global-wakatime-mode))
-
-(use-package! delve-minor-mode
-  :config (add-hook 'org-mode-hook #'delve-minor-mode-maybe-activate))
 
 (use-package! silicon)
 

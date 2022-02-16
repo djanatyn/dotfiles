@@ -61,7 +61,6 @@ zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug 'sharat87/zsh-vim-mode'
 # zplug 'jeffreytse/zsh-vi-mode'
 zplug 'zdharma/history-search-multi-word', defer:3
-zplug 'sobolevn/wakatime-zsh-plugin'
 zplug 'chisui/zsh-nix-shell'
 zplug 'spwhitt/nix-zsh-completions'
 zplug 'romkatv/powerlevel10k', as:theme, depth:1

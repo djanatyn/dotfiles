@@ -1,7 +1,7 @@
 (package! hcl-mode)
 (package! terraform-mode)
 (package! vagrant-tramp)
-(package! nix-mode)
+; (package! nix-mode)
 (package! monokai-theme)
 (package! leuven-theme)
 (package! acme-theme)
@@ -9,18 +9,16 @@
 (package! pinentry)
 (package! wakatime-mode)
 (package! magit-delta)
-(package! org-roam)
-(package! org-roam-server)
-(package! org-sidebar :recipe
-  (:host github :repo "alphapapa/org-sidebar"))
-(package! lister :recipe
-  (:host github
-   :repo "publicimageltd/lister"
-   :branch "main"))
-(package! delve :recipe
-  (:host github
-   :repo "publicimageltd/delve"
-   :branch "main"))
+; (package! org-sidebar :recipe
+;   (:host github :repo "alphapapa/org-sidebar"))
+; (package! lister :recipe
+;   (:host github
+;    :repo "publicimageltd/lister"
+;    :branch "main"))
+; (package! delve :recipe
+;   (:host github
+;    :repo "publicimageltd/delve"
+;    :branch "main"))
 (package! silicon :recipe
   (:host github
    :repo "iensu/silicon-el"))
