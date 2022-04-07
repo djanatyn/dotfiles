@@ -10,5 +10,6 @@
  :editor snippets (evil +everywhere) file-templates (format +onsave) parinfer
  :emacs dired electric fold vc (undo +tree)
  :tools lookup eval editorconfig make magit pass tmux
- :lang elm dhall data (haskell +lsp) markdown nix (org +roam +dragndrop +pandoc) rust (sh +zsh) racket
+ :lang elm dhall lua data (haskell +lsp) markdown (org +roam +dragndrop +pandoc) rust (sh +zsh) racket yaml nix
+ :term vterm
  :config (default +bindings +snippets +evil-commands))
