@@ -2,7 +2,7 @@
 ;; ============
 (doom/set-frame-opacity 80)
 (setq display-line-numbers-type 'relative)
-(setq doom-font (font-spec :family "Unifont" :size 14))
+(setq doom-font (font-spec :family "Terminess Powerline" :size 14))
 (setq doom-theme 'doom-monokai-pro)
 (setq org-roam-directory "~/org-roam")
 
