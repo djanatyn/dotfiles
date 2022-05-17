@@ -64,3 +64,5 @@
     (define-key input-decode-map "\e[1;5B" [(control down)])
     (define-key input-decode-map "\e[1;5F" [(meta left)])))
 
+;; todo: where should this go?
+(setq browse-url-browser-function 'eww-browse-url)
