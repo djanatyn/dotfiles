@@ -2,7 +2,7 @@
 ;; ============
 (setq display-line-numbers-type 'relative)
 (setq doom-font (font-spec :family "Terminess Powerline" :size 14))
-(setq doom-theme 'doom-monokai-pro)
+(setq doom-theme 'doom-molokai)
 (setq org-roam-directory "~/org-roam")
 
 (after! org
