@@ -42,7 +42,7 @@
 
 (defun tmux-insert ()
   (interactive)
-  (insert (string-trim (shell-command-to-string "tmux show-buffer"))))
+  (insert (string-trim (shell-command-to-string "tmux -S ~/tmux-socket show-buffer"))))
 
 ;; personal keybindings
 ;; ====================
