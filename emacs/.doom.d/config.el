@@ -12,6 +12,7 @@
   (require 'ucs-normalize))
 
 (after! term
+  (setq vterm-shell "/run/current-system/sw/bin/bash")
   (setq multi-term-program "/run/current-system/sw/bin/bash"))
 
 (after! notmuch
