@@ -123,3 +123,10 @@ if [[ -f ~/.p10k.zsh ]]; then
     source ~/.p10k.ssh.zsh
   fi
 fi
+
+function torrent-search() {
+  curl -sLG 'http://localhost:9117/torznab/all' \
+    -d "apikey=$(pass show jackett/api-key 2>/dev/null)" \
+    --data-urlencode q="$*" \
+    | xml sel -T -t -v '//item/title'
+}
