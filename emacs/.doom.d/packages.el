@@ -22,7 +22,6 @@
 (package! silicon :recipe
   (:host github
    :repo "iensu/silicon-el"))
-(package! org-ql)
 (package! spdx :recipe
   (:host github
    :repo "condy0919/spdx.el"))
