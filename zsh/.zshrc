@@ -130,3 +130,12 @@ function torrent-search() {
     --data-urlencode q="$*" \
     | xml sel -T -t -v '//item/title'
 }
+
+function download-video() {
+  systemd-run --user -d \
+    --remain-after-exit \
+    -u "$1" \
+    -p IPAccounting=yes \
+    yt-dlp --write-info-json "$2"
+}
+
