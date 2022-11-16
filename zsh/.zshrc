@@ -45,7 +45,7 @@ fi
 
 # PATH
 # ====
-export PATH="/usr/local/bin:${HOME}/.local/bin:${PATH}"
+export PATH="${HOME}/.cargo/bin:/usr/local/bin:${HOME}/.local/bin:${PATH}"
 
 # zplug
 # =====
@@ -138,4 +138,3 @@ function download-video() {
     -p IPAccounting=yes \
     yt-dlp --write-info-json "$2"
 }
-
