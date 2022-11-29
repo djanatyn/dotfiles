@@ -67,3 +67,9 @@
 
 ;; todo: where should this go?
 (setq browse-url-browser-function 'eww-browse-url)
+
+;; debugger support
+(setq dap-auto-configure-mode t)
+(require 'dap-cpptools)
+(require 'dap-lldb)
+(require 'dap-gdb-lldb)
