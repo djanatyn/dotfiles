@@ -25,7 +25,8 @@
               sql-mode         ; sqlformat is currently broken
               tex-mode         ; latexindent is broken
               latex-mode
-              nix-mode)))
+              nix-mode
+              typescript-mode)))
 
 (after! magit
   (magit-delta-mode +1))
