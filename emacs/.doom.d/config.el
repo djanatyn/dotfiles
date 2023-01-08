@@ -1,5 +1,7 @@
 ;; doom modules
 ;; ============
+(require 'shortdoc) ;; for emacs 29?
+
 (setq display-line-numbers-type 'relative)
 (setq doom-font (font-spec :family "Terminess Powerline" :size 14))
 (setq doom-theme 'doom-molokai)
@@ -70,7 +72,7 @@
 (setq browse-url-browser-function 'eww-browse-url)
 
 ;; debugger support
-(setq dap-auto-configure-mode t)
-(require 'dap-cpptools)
-(require 'dap-lldb)
-(require 'dap-gdb-lldb)
+; (setq dap-auto-configure-mode t)
+; (require 'dap-cpptools)
+; (require 'dap-lldb)
+; (require 'dap-gdb-lldb)
