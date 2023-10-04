@@ -24,7 +24,7 @@
   (setq-hook! 'typescript-mode-hook +format-with-lsp nil)
   (setq-hook! 'typescript-tsx-mode-hook +format-with-lsp nil)
   (set-formatter! 'ormolu "ormolu" :modes '(haskell-mode))
-  (set-formatter! 'prettier "yarn exec prettier -- --parser typescript"
+  (set-formatter! 'prettier "yarn exec --silent prettier -- --parser typescript"
     :modes '(typescript-mode
              typescript-tsx-mode))
   (setq +format-on-save-enabled-modes
