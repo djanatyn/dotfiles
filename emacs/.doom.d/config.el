@@ -21,14 +21,18 @@
   (setq +notmuch-sync-backend 'mbsync))
 
 (after! format
+  (setq-hook! 'typescript-mode-hook +format-with-lsp nil)
+  (setq-hook! 'typescript-tsx-mode-hook +format-with-lsp nil)
   (set-formatter! 'ormolu "ormolu" :modes '(haskell-mode))
+  (set-formatter! 'prettier "yarn exec prettier -- --parser typescript"
+    :modes '(typescript-mode
+             typescript-tsx-mode))
   (setq +format-on-save-enabled-modes
         '(not emacs-lisp-mode  ; elisp's mechanisms are good enough
               sql-mode         ; sqlformat is currently broken
               tex-mode         ; latexindent is broken
               latex-mode
-              nix-mode
-              typescript-mode)))
+              nix-mode)))
 
 (after! magit
   (magit-delta-mode +1))
@@ -53,11 +57,11 @@
 ;; i learned how to do this from https://rameezkhan.me/adding-keybindings-to-doom-emacs/
 (map! :leader
       (:prefix-map ("i" . "insert")
-       :desc "tmux show-buffer" "l" 'tmux-insert)
+                   :desc "tmux show-buffer" "l" 'tmux-insert)
 
       (:prefix-map ("c" . "code")
-       :desc "org-structure-template" "," 'org-insert-structure-template
-       :desc "license" "l" 'spdx-insert-spdx))
+                   :desc "org-structure-template" "," 'org-insert-structure-template
+                   :desc "license" "l" 'spdx-insert-spdx))
 
 ;; fix terminal escape sequences
 (unless (display-graphic-p)
@@ -72,7 +76,14 @@
 (setq browse-url-browser-function 'eww-browse-url)
 
 ;; debugger support
-; (setq dap-auto-configure-mode t)
-; (require 'dap-cpptools)
-; (require 'dap-lldb)
-; (require 'dap-gdb-lldb)
+;; (setq dap-auto-configure-mode t)
+;; (require 'dap-cpptools)
+;; (require 'dap-lldb)
+;; (require 'dap-gdb-lldb)
+
+(setq lsp-ui-sideline-show-diagnostics t)
+(setq lsp-ui-sideline-show-hover t)
+(setq lsp-ui-sideline-show-code-actions t)
+(setq lsp-ui-peek-enable t)
+(setq lsp-ui-doc-enable t)
+(setq lsp-ui-doc-show-with-mouse t)
