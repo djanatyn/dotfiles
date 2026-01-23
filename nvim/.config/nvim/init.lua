@@ -115,18 +115,39 @@ end
 -- ============================================
 require("lazy").setup({
   -- ==================
-  -- Colorscheme
+  -- Colorschemes
   -- ==================
   {
     "ellisonleao/gruvbox.nvim",
-    lazy = false, -- load immediately
-    priority = 1000, -- load before other plugins
+    lazy = false,
+    priority = 1000,
     config = function()
       require("gruvbox").setup({
         contrast = "hard",
       })
       vim.cmd.colorscheme("gruvbox")
     end,
+  },
+
+  {
+    "everviolet/nvim",
+    name = "evergarden",
+    lazy = true, -- load via <Space>ft colorscheme picker
+    priority = 1000,
+    opts = {
+      theme = {
+        variant = "fall", -- 'winter'|'fall'|'spring'|'summer'
+        accent = "green",
+      },
+      integrations = {
+        cmp = true,
+        gitsigns = true,
+        neotree = true,
+        rainbow_delimiters = true,
+        telescope = true,
+        which_key = true,
+      },
+    },
   },
 
   -- ==================
