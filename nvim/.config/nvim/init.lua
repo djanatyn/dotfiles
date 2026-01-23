@@ -118,15 +118,21 @@ require("lazy").setup({
   -- Colorschemes
   -- ==================
   {
-    "ellisonleao/gruvbox.nvim",
+    "UtkarshVerma/molokai.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      require("gruvbox").setup({
-        contrast = "hard",
-      })
-      vim.cmd.colorscheme("gruvbox")
+      vim.cmd.colorscheme("molokai")
     end,
+  },
+
+  {
+    "ellisonleao/gruvbox.nvim",
+    lazy = true, -- load via <Space>ft colorscheme picker
+    priority = 1000,
+    opts = {
+      contrast = "hard",
+    },
   },
 
   {
@@ -165,7 +171,8 @@ require("lazy").setup({
       dashboard.section.buttons.val = {
         dashboard.button("f", "  Find file", "<cmd>Telescope find_files<cr>"),
         dashboard.button("r", "  Recent files", "<cmd>Telescope oldfiles<cr>"),
-        dashboard.button("p", "  Find project", function() with_project_picker(function(path) vim.cmd("cd " .. vim.fn.fnameescape(path)) end) end),
+        dashboard.button("p", "  Find project",
+          function() with_project_picker(function(path) vim.cmd("cd " .. vim.fn.fnameescape(path)) end) end),
         dashboard.button("g", "  Live grep", "<cmd>Telescope live_grep<cr>"),
         dashboard.button("n", "  New file", "<cmd>ene<cr>"),
         dashboard.button("s", "  Git status", "<cmd>Git<cr>"),
@@ -208,31 +215,31 @@ require("lazy").setup({
     },
     cmd = "Telescope",
     keys = {
-      { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
-      { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
-      { "<leader>/", "<cmd>Telescope live_grep<cr>", desc = "Search in project" },
-      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-      { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent files" },
-      { "<leader>fc", "<cmd>Telescope commands<cr>", desc = "Commands" },
-      { "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document symbols" },
-      { "<leader>fS", "<cmd>Telescope lsp_workspace_symbols<cr>", desc = "Workspace symbols" },
-      { "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
-      { "<leader>fq", "<cmd>Telescope quickfix<cr>", desc = "Quickfix list" },
-      { "<leader>*", "<cmd>Telescope grep_string<cr>", desc = "Search word under cursor" },
-      { "<leader>ss", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Search in buffer (swiper)" },
+      { "<leader>ff", "<cmd>Telescope find_files<cr>",                     desc = "Find files" },
+      { "<leader>fg", "<cmd>Telescope live_grep<cr>",                      desc = "Live grep" },
+      { "<leader>/",  "<cmd>Telescope live_grep<cr>",                      desc = "Search in project" },
+      { "<leader>fb", "<cmd>Telescope buffers<cr>",                        desc = "Buffers" },
+      { "<leader>fr", "<cmd>Telescope oldfiles<cr>",                       desc = "Recent files" },
+      { "<leader>fc", "<cmd>Telescope commands<cr>",                       desc = "Commands" },
+      { "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>",           desc = "Document symbols" },
+      { "<leader>fS", "<cmd>Telescope lsp_workspace_symbols<cr>",          desc = "Workspace symbols" },
+      { "<leader>fd", "<cmd>Telescope diagnostics<cr>",                    desc = "Diagnostics" },
+      { "<leader>fq", "<cmd>Telescope quickfix<cr>",                       desc = "Quickfix list" },
+      { "<leader>*",  "<cmd>Telescope grep_string<cr>",                    desc = "Search word under cursor" },
+      { "<leader>ss", "<cmd>Telescope current_buffer_fuzzy_find<cr>",      desc = "Search in buffer (swiper)" },
       { "<leader>sS", "<cmd>Telescope live_grep grep_open_files=true<cr>", desc = "Search in open buffers" },
       -- Resume and misc
-      { "<leader>f.", "<cmd>Telescope resume<cr>", desc = "Resume last picker" },
-      { "<leader>'", "<cmd>Telescope registers<cr>", desc = "Registers" },
-      { "<leader>gC", "<cmd>Telescope git_bcommits<cr>", desc = "Buffer commits" },
-      { "<leader>s/", "<cmd>Telescope search_history<cr>", desc = "Search history" },
-      { "<leader>fj", "<cmd>Telescope jumplist<cr>", desc = "Jumplist" },
-      { "<leader>ft", "<cmd>Telescope colorscheme<cr>", desc = "Colorschemes" },
+      { "<leader>f.", "<cmd>Telescope resume<cr>",                         desc = "Resume last picker" },
+      { "<leader>'",  "<cmd>Telescope registers<cr>",                      desc = "Registers" },
+      { "<leader>gC", "<cmd>Telescope git_bcommits<cr>",                   desc = "Buffer commits" },
+      { "<leader>s/", "<cmd>Telescope search_history<cr>",                 desc = "Search history" },
+      { "<leader>fj", "<cmd>Telescope jumplist<cr>",                       desc = "Jumplist" },
+      { "<leader>ft", "<cmd>Telescope colorscheme<cr>",                    desc = "Colorschemes" },
       -- Help (<Space>h prefix, doom-style)
-      { "<leader>hk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
-      { "<leader>hh", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
-      { "<leader>hm", "<cmd>Telescope man_pages<cr>", desc = "Man pages" },
-      { "<leader>hb", "<cmd>WhichKey<cr>", desc = "Browse bindings" },
+      { "<leader>hk", "<cmd>Telescope keymaps<cr>",                        desc = "Keymaps" },
+      { "<leader>hh", "<cmd>Telescope help_tags<cr>",                      desc = "Help tags" },
+      { "<leader>hm", "<cmd>Telescope man_pages<cr>",                      desc = "Man pages" },
+      { "<leader>hb", "<cmd>WhichKey<cr>",                                 desc = "Browse bindings" },
       {
         "<leader>fF",
         function()
@@ -395,10 +402,10 @@ require("lazy").setup({
     dependencies = { "nvim-lua/plenary.nvim" },
     cmd = "Spectre",
     keys = {
-      { "<leader>sr", '<cmd>lua require("spectre").toggle()<cr>', desc = "Search & replace (project)" },
+      { "<leader>sr", '<cmd>lua require("spectre").toggle()<cr>',                        desc = "Search & replace (project)" },
       { "<leader>sw", '<cmd>lua require("spectre").open_visual({select_word=true})<cr>', desc = "Search word under cursor" },
-      { "<leader>sw", '<esc><cmd>lua require("spectre").open_visual()<cr>', mode = "v", desc = "Search selection" },
-      { "<leader>sb", '<cmd>lua require("spectre").open_file_search()<cr>', desc = "Search & replace (buffer)" },
+      { "<leader>sw", '<esc><cmd>lua require("spectre").open_visual()<cr>',              mode = "v",                         desc = "Search selection" },
+      { "<leader>sb", '<cmd>lua require("spectre").open_file_search()<cr>',              desc = "Search & replace (buffer)" },
     },
     config = function()
       require("spectre").setup({
@@ -427,6 +434,20 @@ require("lazy").setup({
   },
 
   -- ==================
+  -- Lazydev (Neovim Lua API completion - replaces neodev)
+  -- ==================
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {
+      library = {
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
+  },
+
+  -- ==================
   -- LSP & Completion
   -- ==================
   {
@@ -437,10 +458,9 @@ require("lazy").setup({
       "williamboman/mason-lspconfig.nvim",
       "hrsh7th/cmp-nvim-lsp",
       { "j-hui/fidget.nvim", opts = {} }, -- LSP progress indicator
-      { "folke/neodev.nvim", opts = {} }, -- Neovim Lua API completion
     },
     config = function()
-      -- Setup mason first
+      -- Setup mason
       require("mason").setup()
 
       -- LSP servers to install and configure
@@ -591,6 +611,7 @@ require("lazy").setup({
           end, { "i", "s" }),
         }),
         sources = cmp.config.sources({
+          { name = "lazydev", group_index = 0 }, -- top priority for Neovim Lua API
           { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "path" },
@@ -785,9 +806,9 @@ require("lazy").setup({
     "tpope/vim-fugitive",
     cmd = { "Git", "G", "Gstatus", "Gblame", "Gpush", "Gpull", "Gdiffsplit" },
     keys = {
-      { "<leader>gg", "<cmd>Git<cr>", desc = "Git status" },
-      { "<leader>gc", "<cmd>Git commit<cr>", desc = "Git commit" },
-      { "<leader>gP", "<cmd>Git push<cr>", desc = "Git push" },
+      { "<leader>gg", "<cmd>Git<cr>",               desc = "Git status" },
+      { "<leader>gc", "<cmd>Git commit<cr>",        desc = "Git commit" },
+      { "<leader>gP", "<cmd>Git push<cr>",          desc = "Git push" },
       { "<leader>gl", "<cmd>Git log --oneline<cr>", desc = "Git log" },
     },
   },
@@ -860,16 +881,16 @@ require("lazy").setup({
         delay = 200,
       })
       wk.add({
-        { "<leader>f", group = "find" },
+        { "<leader>f",  group = "find" },
         { "<leader>fp", group = "project" },
-        { "<leader>h", group = "help" },
-        { "<leader>s", group = "search/replace" },
-        { "<leader>c", group = "code" },
-        { "<leader>g", group = "git" },
-        { "<leader>b", group = "buffer" },
-        { "<leader>q", group = "quickfix" },
-        { "<leader>l", group = "location list" },
-        { "<leader>w", group = "window" },
+        { "<leader>h",  group = "help" },
+        { "<leader>s",  group = "search/replace" },
+        { "<leader>c",  group = "code" },
+        { "<leader>g",  group = "git" },
+        { "<leader>b",  group = "buffer" },
+        { "<leader>q",  group = "quickfix" },
+        { "<leader>l",  group = "location list" },
+        { "<leader>w",  group = "window" },
       })
     end,
   },
@@ -947,24 +968,24 @@ require("lazy").setup({
       },
     },
     keys = {
-      { "<A-,>", "<cmd>BufferPrevious<cr>", desc = "Previous buffer" },
-      { "<A-.>", "<cmd>BufferNext<cr>", desc = "Next buffer" },
-      { "<A-<>", "<cmd>BufferMovePrevious<cr>", desc = "Move buffer left" },
-      { "<A->>", "<cmd>BufferMoveNext<cr>", desc = "Move buffer right" },
-      { "<A-1>", "<cmd>BufferGoto 1<cr>", desc = "Go to buffer 1" },
-      { "<A-2>", "<cmd>BufferGoto 2<cr>", desc = "Go to buffer 2" },
-      { "<A-3>", "<cmd>BufferGoto 3<cr>", desc = "Go to buffer 3" },
-      { "<A-4>", "<cmd>BufferGoto 4<cr>", desc = "Go to buffer 4" },
-      { "<A-5>", "<cmd>BufferGoto 5<cr>", desc = "Go to buffer 5" },
-      { "<A-6>", "<cmd>BufferGoto 6<cr>", desc = "Go to buffer 6" },
-      { "<A-7>", "<cmd>BufferGoto 7<cr>", desc = "Go to buffer 7" },
-      { "<A-8>", "<cmd>BufferGoto 8<cr>", desc = "Go to buffer 8" },
-      { "<A-9>", "<cmd>BufferGoto 9<cr>", desc = "Go to buffer 9" },
-      { "<A-0>", "<cmd>BufferLast<cr>", desc = "Go to last buffer" },
-      { "<A-p>", "<cmd>BufferPin<cr>", desc = "Pin buffer" },
-      { "<A-c>", "<cmd>BufferClose<cr>", desc = "Close buffer" },
-      { "<leader>bp", "<cmd>BufferPick<cr>", desc = "Pick buffer" },
-      { "<leader>bc", "<cmd>BufferClose<cr>", desc = "Close buffer" },
+      { "<A-,>",      "<cmd>BufferPrevious<cr>",                   desc = "Previous buffer" },
+      { "<A-.>",      "<cmd>BufferNext<cr>",                       desc = "Next buffer" },
+      { "<A-<>",      "<cmd>BufferMovePrevious<cr>",               desc = "Move buffer left" },
+      { "<A->>",      "<cmd>BufferMoveNext<cr>",                   desc = "Move buffer right" },
+      { "<A-1>",      "<cmd>BufferGoto 1<cr>",                     desc = "Go to buffer 1" },
+      { "<A-2>",      "<cmd>BufferGoto 2<cr>",                     desc = "Go to buffer 2" },
+      { "<A-3>",      "<cmd>BufferGoto 3<cr>",                     desc = "Go to buffer 3" },
+      { "<A-4>",      "<cmd>BufferGoto 4<cr>",                     desc = "Go to buffer 4" },
+      { "<A-5>",      "<cmd>BufferGoto 5<cr>",                     desc = "Go to buffer 5" },
+      { "<A-6>",      "<cmd>BufferGoto 6<cr>",                     desc = "Go to buffer 6" },
+      { "<A-7>",      "<cmd>BufferGoto 7<cr>",                     desc = "Go to buffer 7" },
+      { "<A-8>",      "<cmd>BufferGoto 8<cr>",                     desc = "Go to buffer 8" },
+      { "<A-9>",      "<cmd>BufferGoto 9<cr>",                     desc = "Go to buffer 9" },
+      { "<A-0>",      "<cmd>BufferLast<cr>",                       desc = "Go to last buffer" },
+      { "<A-p>",      "<cmd>BufferPin<cr>",                        desc = "Pin buffer" },
+      { "<A-c>",      "<cmd>BufferClose<cr>",                      desc = "Close buffer" },
+      { "<leader>bp", "<cmd>BufferPick<cr>",                       desc = "Pick buffer" },
+      { "<leader>bc", "<cmd>BufferClose<cr>",                      desc = "Close buffer" },
       { "<leader>bC", "<cmd>BufferCloseAllButCurrentOrPinned<cr>", desc = "Close other buffers" },
     },
   },
@@ -1014,6 +1035,38 @@ require("lazy").setup({
       ui = {
         border = "single",
         compact = false,
+      },
+    },
+  },
+
+  -- ==================
+  -- CodeSnap (code screenshots)
+  -- ==================
+  {
+    "mistricky/codesnap.nvim",
+    build = "make",
+    cmd = { "CodeSnap", "CodeSnapSave", "CodeSnapASCII", "CodeSnapHighlight", "CodeSnapSaveHighlight" },
+    keys = {
+      { "<leader>cs", "<cmd>CodeSnap<cr>", mode = "v", desc = "Screenshot to clipboard" },
+      { "<leader>cS", ":CodeSnapSave ~/screenshots/<cr>", mode = "v", desc = "Screenshot to file" },
+      { "<leader>ca", "<cmd>CodeSnapASCII<cr>", mode = "v", desc = "ASCII screenshot to clipboard" },
+      { "<leader>ch", "<cmd>CodeSnapHighlight<cr>", mode = "v", desc = "Screenshot with highlight" },
+    },
+    opts = {
+      show_line_number = true,
+      show_workspace = true,
+      snapshot_config = {
+        theme = "candy",
+        code_config = {
+          font_family = "Dank Mono",
+          breadcrumbs = {
+            enable = true,
+            separator = "/",
+          },
+        },
+        watermark = {
+          content = "",  -- disable watermark
+        },
       },
     },
   },
@@ -1123,10 +1176,10 @@ vim.keymap.set("v", "<leader>|", function()
       -- Get selection
       local lines = vim.fn.getregion(vim.fn.getpos("v"), vim.fn.getpos("."), { type = vim.fn.mode() })
       local input = table.concat(lines, "\n")
-      
+
       -- Run command
       local output = vim.fn.system(cmd, input)
-      
+
       -- Open new scratch buffer with output
       vim.cmd("new")
       vim.bo.buftype = "nofile"
