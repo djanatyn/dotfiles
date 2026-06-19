@@ -4,14 +4,22 @@
 
 (setq display-line-numbers-type 'relative)
 (setq doom-font (font-spec :family "Terminess Powerline" :size 14))
-(setq doom-theme 'doom-molokai)
+(setq doom-theme 'doom-monokai-octagon)
 (setq org-roam-directory "~/org-roam")
+(add-to-list 'load-path (expand-file-name "lisp" doom-user-dir))
+(add-to-list 'auto-mode-alist '("\\.bb\\'" . clojure-mode))
+(xterm-mouse-mode)
 
 (after! org
   (setq org-agenda-files '("~/org-roam/" "~/org-roam/daily/"))
   (setq org-log-done t)
   (org-babel-lob-ingest "~/org-roam/library-of-babel.org")
-  (require 'ucs-normalize))
+  (require 'ucs-normalize)
+  (require 'ob-janet)
+  (require 'ob-babashka)
+  (add-to-list 'org-babel-load-languages '(janet . t))
+  (add-to-list 'org-babel-load-languages '(babashka . t))
+  (org-babel-do-load-languages 'org-babel-do-load-languages org-babel-load-languages))
 
 (after! term
   (setq vterm-shell "/run/current-system/sw/bin/bash")
@@ -23,8 +31,9 @@
 (after! format
   (setq-hook! 'typescript-mode-hook +format-with-lsp nil)
   (setq-hook! 'typescript-tsx-mode-hook +format-with-lsp nil)
-  (set-formatter! 'ormolu "ormolu" :modes '(haskell-mode))
-  (set-formatter! 'prettier "yarn exec --silent prettier -- --parser typescript"
+  (set-formatter! 'ormolu '("ormolu") :modes '(haskell-mode))
+  (set-formatter! 'zprint '("zprint") :modes '(clojure-mode))
+  (set-formatter! 'prettier '("yarn exec --silent prettier -- --parser typescript")
     :modes '(typescript-mode
              typescript-tsx-mode))
   (setq +format-on-save-enabled-modes
@@ -58,7 +67,6 @@
 (map! :leader
       (:prefix-map ("i" . "insert")
                    :desc "tmux show-buffer" "l" 'tmux-insert)
-
       (:prefix-map ("c" . "code")
                    :desc "org-structure-template" "," 'org-insert-structure-template
                    :desc "license" "l" 'spdx-insert-spdx))

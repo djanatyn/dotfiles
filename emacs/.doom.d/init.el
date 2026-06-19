@@ -10,8 +10,9 @@
  :email notmuch
  :editor snippets (evil +everywhere) file-templates (format +onsave) parinfer
  :emacs dired electric fold vc (undo +tree)
- :tools lookup eval editorconfig make magit pass tmux lsp (debugger +lsp) direnv
- :lang elm dhall lua data (haskell +lsp) markdown (org +roam +dragndrop +pandoc) (web +html)
- (rust +lsp) (sh +zsh) racket yaml nix julia common-lisp plantuml zig ruby lua (javascript +lsp)
+ :tools lookup eval editorconfig make (magit +forge) pass tmux lsp (debugger +lsp) direnv
+ :lang lua data (haskell +lsp) markdown (org +roam +dragndrop +pandoc) (web +html)
+ (rust +lsp) (sh +zsh) yaml nix common-lisp plantuml zig lua (javascript +lsp) (python +poetry +lsp +pyright) (clojure +lsp)
  :term vterm
- :config (default +bindings +snippets +evil-commands))
+ :config (default +bindings +snippets +evil-commands)
+ :os tty)

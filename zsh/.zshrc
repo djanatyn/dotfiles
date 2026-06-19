@@ -1,4 +1,9 @@
-#!/bin/zsh
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 # user functions
 # ==============
@@ -19,10 +24,10 @@ export LC_CTYPE=en_US.UTF-8
 # ================
 setWindowTitle() { print -Pn "\e]0;${1}\a" }
 
-# exa
+# eza
 # ===
-if which exa >/dev/null; then
-  alias ls='exa'
+if which eza >/dev/null; then
+  alias ls='eza'
 fi
 
 # term
@@ -31,21 +36,11 @@ export TERM=xterm-256color
 
 # nix
 # ===
-if [[ -f ${HOME}/.nix-profile/etc/profile.d/nix.sh ]]; then
-  source "${HOME}/.nix-profile/etc/profile.d/nix.sh"
-fi
+PATH="${HOME}/.nix-profile/bin:${HOME}/.local/bin:${PATH}"
 
 # editor
 # ======
-if [[ -z $SSH_CONNECTION ]]; then
-  export EDITOR="emacsclient -nw"
-else
-  export EDITOR="emacsclient"
-fi
-
-# PATH
-# ====
-export PATH="${HOME}/.cargo/bin:/usr/local/bin:${HOME}/.local/bin:${PATH}"
+export EDITOR="nvim"
 
 # zplug
 # =====
@@ -138,3 +133,12 @@ function download-video() {
     -p IPAccounting=yes \
     yt-dlp --write-info-json "$2"
 }
+
+
+
+# Created by `pipx` on 2026-05-14 17:50:55
+export PATH="$PATH:/Users/jstrickland/.local/bin"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
