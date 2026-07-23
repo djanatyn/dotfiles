@@ -72,6 +72,12 @@
                    :desc "org-structure-template" "," 'org-insert-structure-template
                    :desc "license" "l" 'spdx-insert-spdx))
 
+(after! cider
+  (map! :map clojure-mode-map
+        :localleader
+        (:prefix ("e" . "eval")
+                 "p" #'cider-pprint-eval-defun-to-comment)))
+
 ;; fix terminal escape sequences
 (unless (display-graphic-p)
   (progn
