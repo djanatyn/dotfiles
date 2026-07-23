@@ -29,3 +29,4 @@
   (:host github
          :repo "alphapapa/snow.el"))
 (package! janet-mode)
+(package! batppuccin)

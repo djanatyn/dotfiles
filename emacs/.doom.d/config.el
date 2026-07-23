@@ -2,9 +2,10 @@
 ;; ============
 (require 'shortdoc) ;; for emacs 29?
 
+(setq shell-file-name "/bin/zsh")
 (setq display-line-numbers-type 'relative)
 (setq doom-font (font-spec :family "Terminess Powerline" :size 14))
-(setq doom-theme 'doom-monokai-octagon)
+(setq doom-theme 'batppuccin-macchiato)
 (setq org-roam-directory "~/org-roam")
 (add-to-list 'load-path (expand-file-name "lisp" doom-user-dir))
 (add-to-list 'auto-mode-alist '("\\.bb\\'" . clojure-mode))
