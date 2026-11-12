@@ -1,0 +1,2 @@
+#!/bin/sh
+nohup afplay "$HOME/.local/share/sounds/ds1/ds1-select.mp3" >/dev/null 2>&1 &
