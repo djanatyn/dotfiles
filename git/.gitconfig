@@ -1,0 +1,9 @@
+[init]
+	defaultBranch = main
+[user]
+	email = me@djan.org
+	name = Jonathan Strickland
+[push]
+	autoSetupRemote = true
+[github]
+	user = djanatyn
