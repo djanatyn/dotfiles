@@ -10,7 +10,7 @@ stow tmux -t $HOME
 stow emacs -t $HOME
 
 # sfx for git
-stow sounds -t $HOME/.localshare/sounds
+stow sounds -t $HOME/.local/share/sounds
 
 # XDG configuration
 stow git -t $HOME/.config/git
