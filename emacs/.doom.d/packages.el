@@ -30,3 +30,5 @@
          :repo "alphapapa/snow.el"))
 (package! janet-mode)
 (package! batppuccin)
+(package! typst-ts-mode)
+(package! ron-mode)
